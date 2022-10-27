@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-prestop-hook
+spec:
+  contaieners:
+    - image: ralitong/kubia
+      name: kubia
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      lifecycle:
+        preStop:
+          httpGet:
+            port: 8080
+            path: shutdown

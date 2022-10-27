@@ -1,0 +1,14 @@
+apiVersion: servicecatalog.k8s.io/v1alpha1
+bindable: true
+brokerName: database-broker
+description: A PostgreSQL database
+metadata:
+  name: postgres-database
+planUpdtable: false
+plans:
+  - description: A free (but slow) PostgreSQL instance
+    name: free
+    osbFree: true
+  - description: A paid (very fast) PostgreSQL instance
+    name: premium
+    osbFree: false

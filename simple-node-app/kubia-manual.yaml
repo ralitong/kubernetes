@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-manual
+  labels:
+    app: kubia
+    creation_method: manual
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: kubia
+      creation_method: manual
+  template:
+    metadata:
+      labels:
+        app: kubia
+        creation_method: manual
+    spec:
+      containers:
+        - image: ralitong/kubia
+          name: kubia
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+

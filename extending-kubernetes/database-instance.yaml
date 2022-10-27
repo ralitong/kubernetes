@@ -1,0 +1,9 @@
+apiVersion: servicecatalog.k8s.io/v1alpha1
+kind: ServiceInstance
+metadata:
+  name: my-postgres-db
+spec:
+  clusterServiceClassName: postgres-database
+  clusterServicePlanName: free
+  parameters:
+    init-db-args: --data-checksums

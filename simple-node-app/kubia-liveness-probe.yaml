@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-liveness
+  labels:
+    app: kubia
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      nodeSelector:
+        gpu: "true"
+      containers:
+        - image: ralitong/kubia-unhealthy
+          name: kubia
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+

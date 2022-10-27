@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia
+  labels:
+    app: kubia
+spec:
+  replicas: 3 
+  selector:
+      matchLabels:
+        app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+        - image: ralitong/kubia
+          name: kubia
+          ports:
+            - name: http
+              containerPort: 8080

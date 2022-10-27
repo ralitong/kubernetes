@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia-gpu
+  labels:
+    app: kubia
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      nodeSelector:
+        gpu: "true"
+      containers:
+        - image: ralitong/kubia
+          name: kubia
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+
